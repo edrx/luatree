@@ -1,0 +1,46 @@
+/* This file:
+ *   http://angg.twu.net/luatree/lua-tree.mac.html
+ *   http://angg.twu.net/luatree/lua-tree.mac
+ *           (find-angg "luatree/lua-tree.mac")
+ * Author: Eduardo Ochs <eduardoochs@gmail.com>
+ *
+ * (defun l  () (interactive) (find-angg "luatree/luatree.lisp"))
+ * (defun lu () (interactive) (find-angg "luatree/luatree.lua"))
+ * (defun m  () (interactive) (find-angg "luatree/luatree.mac"))
+ * See: (find-es "maxima" "luatree")
+ *
+ * (find-angg "luatree/luatree.lisp")
+*/
+load       ("~/luatree/luatree.lisp");
+
+luatree1      : lambda([o], concat(    "\"", o, "\""));
+luatreeop     : lambda([o], concat("[0]=\"", o, "\""));
+luatreearg    : lambda([o], concat(", ", luatree1d(o)));
+luatreeargs   : lambda([L], apply('concat, map(luatreearg, L)));
+luatreeopargs : lambda([o], concat("{", luatreeop(op(o)), luatreeargs(args(o)), "}"));
+luatree1d     : lambda([o], if atom(o) then luatree1(o) else luatreeopargs(o));
+luatree       : lambda([o], print(luatree_lua(luatree1d(o))), "");   /* calls lua */
+
+/*
+ (eepitch-maxima)
+ (eepitch-kill)
+ (eepitch-maxima)
+ (find-angg "luatree/luatree.mac")
+load       ("~/luatree/luatree.mac");
+luatree1d(luatree1d);
+luatree1d(x+y);
+luatree  (x+y);
+luatree  ('(a : b));
+MV2 : 'integrate(fp(g(x))*gp(x), x, a, b) = 'integrate(fp(u), u, g(a), g(b));
+luatree  (MV2);
+
+*/
+
+
+
+/*
+ * Local Variables:
+ * mode:  c
+ * modes: (c-mode maxima-mode)
+ * End:
+*/

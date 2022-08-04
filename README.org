@@ -18,6 +18,18 @@
 # (find-maximamsg "37689770 202208 04" "Basic question on paths")
 #+OPTIONS: toc:nil num:nil
 
+
+This is my first Maxima program that falls in the "worth sharing"
+class. I have very little experience with both Maxima and Common Lisp,
+so all suggestions are very welcome.
+
+In this version the paths are still hardcoded. See [[https://sourceforge.net/p/maxima/mailman/message/37689770/][this message]] that I
+sent to the Maxima mailing list.
+
+For HTMLized versions of the source files in which all the [[http://angg.twu.net/#eev][eev]]-isms
+are hmlized correctly, follow these links: [[http://angg.twu.net/luatree/luatree.mac.html][luatree.mac]], [[http://angg.twu.net/luatree/luatree.lisp.html][luatree.lisp]],
+[[http://angg.twu.net/luatree/luatree.lua.html][luatree.lua]].
+
 #+begin_comment
  (eepitch-shell)
  (eepitch-kill)
