@@ -1,0 +1,45 @@
+# This file:
+#   https://github.com/edrx/luatree/
+#       http://angg.twu.net/luatree/README.org.html
+#       http://angg.twu.net/luatree/README.org
+#               (find-angg "luatree/README.org")
+#               (find-angg "luatree/")
+# Author: Eduardo Ochs <eduardoochs@gmail.com>
+# License: Public Domain.
+# 
+# Some eev-isms:
+# (defun c  () (interactive) (eek "C-c C-e h h"))
+# (defun o  () (interactive) (find-angg "luatree/README.org"))
+# (defun v  () (interactive) (brg     "~/luatree/README.html"))
+# (defun cv () (interactive) (c) (v))
+# 
+# (find-mygitrepo-links "luatree")
+# (find-orgnode "Table of Contents")
+# (find-maximamsg "37689770 202208 04" "Basic question on paths")
+#+OPTIONS: toc:nil num:nil
+
+#+begin_comment
+ (eepitch-shell)
+ (eepitch-kill)
+ (eepitch-shell)
+cd ~/luatree/
+laf
+rm -v *~
+rm -v *.html
+
+# (find-fline   "~/luatree/")
+# (magit-status "~/luatree/")
+# (find-gitk    "~/luatree/")
+#
+#   (s)tage all changes
+#   (c)ommit -> (c)reate
+#   (P)ush -> (p)ushremote
+#   https://github.com/edrx/luatree
+#
+#+end_comment
+
+# Local Variables:
+# coding:               utf-8-unix
+# modes:                (org-mode fundamental-mode)
+# org-html-postamble:   nil
+# End:
