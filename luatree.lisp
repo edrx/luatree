@@ -2,7 +2,12 @@
 ;;   http://angg.twu.net/luatree/luatree.lisp.html
 ;;   http://angg.twu.net/luatree/luatree.lisp
 ;;           (find-angg "luatree/luatree.lisp")
+;; See also:
+;;   http://angg.twu.net/eev-maxima.html#luatree
+;;   https://github.com/edrx/luatree
+;;   https://github.com/edrx/luatree/#introduction
 ;; Author: Eduardo Ochs <eduardoochs@gmail.com>
+;; License: Public Domain.
 ;;
 ;; (defun m  () (interactive) (find-angg "luatree/luatree.mac"))
 ;; (defun li () (interactive) (find-angg "luatree/luatree.lisp"))

@@ -2,7 +2,12 @@
  *   http://angg.twu.net/luatree/lua-tree.mac.html
  *   http://angg.twu.net/luatree/lua-tree.mac
  *           (find-angg "luatree/lua-tree.mac")
+ * See also:
+ *   http://angg.twu.net/eev-maxima.html#luatree
+ *   https://github.com/edrx/luatree
+ *   https://github.com/edrx/luatree/#introduction
  * Author: Eduardo Ochs <eduardoochs@gmail.com>
+ * License: Public Domain.
  *
  * (defun m  () (interactive) (find-angg "luatree/luatree.mac"))
  * (defun li () (interactive) (find-angg "luatree/luatree.lisp"))
@@ -25,9 +30,9 @@ luatree       : lambda([o], print(luatree_lua(luatree1d(o))), "");   /* calls lu
  (eepitch-shell)
  (eepitch-kill)
  (eepitch-shell)
-rm -Rv /tmp/luatree/
-mkdir  /tmp/luatree/
-cd     /tmp/luatree/
+rm -Rfv /tmp/luatree/
+mkdir   /tmp/luatree/
+cd      /tmp/luatree/
 git clone https://github.com/edrx/luatree .
 
  (eepitch-maxima)
