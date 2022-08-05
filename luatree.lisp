@@ -4,9 +4,9 @@
 ;;           (find-angg "luatree/luatree.lisp")
 ;; Author: Eduardo Ochs <eduardoochs@gmail.com>
 ;;
-;; (defun lu () (interactive) (find-angg "luatree/luatree.lua"))
-;; (defun l  () (interactive) (find-angg "luatree/luatree.lisp"))
 ;; (defun m  () (interactive) (find-angg "luatree/luatree.mac"))
+;; (defun li () (interactive) (find-angg "luatree/luatree.lisp"))
+;; (defun lu () (interactive) (find-angg "luatree/luatree.lua"))
 ;; (find-es "maxima" "luatree")
 
 (require :asdf)
@@ -15,7 +15,9 @@
   (with-input-from-string
    (s bigstr)
    (reduce (lambda (a b) (format nil "~a~%~a" a b))
-	   (uiop:run-program "~/luatree/luatree.lua" :input s :output :lines))))
+	   (uiop:run-program
+	    (concatenate 'string #$luatreedir$ "luatree.lua")
+	    :input s :output :lines))))
 
 (defmfun $luatree_lua (str) (luatree-lua str))
 

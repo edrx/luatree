@@ -5,9 +5,9 @@
 --           (find-angg "luatree/luatree.lua")
 -- Author: Eduardo Ochs <eduardoochs@gmail.com>
 --
--- (defun lu () (interactive) (find-angg "luatree/luatree.lua"))
--- (defun l  () (interactive) (find-angg "luatree/luatree.lisp"))
 -- (defun m  () (interactive) (find-angg "luatree/luatree.mac"))
+-- (defun li () (interactive) (find-angg "luatree/luatree.lisp"))
+-- (defun lu () (interactive) (find-angg "luatree/luatree.lua"))
 -- (find-es "maxima" "luatree")
 
 

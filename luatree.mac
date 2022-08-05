@@ -4,15 +4,15 @@
  *           (find-angg "luatree/lua-tree.mac")
  * Author: Eduardo Ochs <eduardoochs@gmail.com>
  *
- * (defun l  () (interactive) (find-angg "luatree/luatree.lisp"))
- * (defun lu () (interactive) (find-angg "luatree/luatree.lua"))
  * (defun m  () (interactive) (find-angg "luatree/luatree.mac"))
+ * (defun li () (interactive) (find-angg "luatree/luatree.lisp"))
+ * (defun lu () (interactive) (find-angg "luatree/luatree.lua"))
  * See: (find-es "maxima" "luatree")
  *
  * (find-angg "luatree/luatree.lisp")
 */
-load       ("~/luatree/luatree.lisp");
-
+luatreedir    : pathname_directory(load_pathname);
+load            (concat(luatreedir, "luatree.lisp"));
 luatree1      : lambda([o], concat(    "\"", o, "\""));
 luatreeop     : lambda([o], concat("[0]=\"", o, "\""));
 luatreearg    : lambda([o], concat(", ", luatree1d(o)));
@@ -22,17 +22,24 @@ luatree1d     : lambda([o], if atom(o) then luatree1(o) else luatreeopargs(o));
 luatree       : lambda([o], print(luatree_lua(luatree1d(o))), "");   /* calls lua */
 
 /*
+ (eepitch-shell)
+ (eepitch-kill)
+ (eepitch-shell)
+rm -Rv /tmp/luatree/
+mkdir  /tmp/luatree/
+cd     /tmp/luatree/
+git clone https://github.com/edrx/luatree .
+
  (eepitch-maxima)
  (eepitch-kill)
  (eepitch-maxima)
- (find-angg "luatree/luatree.mac")
-load       ("~/luatree/luatree.mac");
-luatree1d(luatree1d);
-luatree1d(x+y);
-luatree  (x+y);
-luatree  ('(a : b));
+load ("/tmp/luatree/luatree.mac");
+luatreedir;
 MV2 : 'integrate(fp(g(x))*gp(x), x, a, b) = 'integrate(fp(u), u, g(a), g(b));
 luatree  (MV2);
+luatree1d(luatree1d);
+luatree  (luatree1d);
+luatree  (luatree);
 
 */
 
