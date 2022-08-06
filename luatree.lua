@@ -16,6 +16,73 @@
 -- (find-es "maxima" "luatree")
 
 
+
+
+-- Assorted small functions from my init file.
+-- From: (find-angg "LUA/lua50init.lua" "eval-and-L")
+--       (find-angg "LUA/lua50init.lua" "min-and-max")
+--       (find-angg "LUA/lua50init.lua" "splitlines")
+--       (find-angg "LUA/lua50init.lua" "splitlines")
+--       (find-angg "LUA/lua50init.lua" "map")
+--       (find-angg "LUA/lua50init.lua" "fold")
+--
+eval = function (str) return assert(loadstring(str))() end
+expr = function (str) return eval("return "..str) end
+
+min = function (a, b)
+    if a < b then return a else return b end
+  end
+max = function (a, b)
+    if a < b then return b else return a end
+  end
+
+split = function (str, pat)
+    local arr = {}
+    string.gsub(str, pat or "([^%s]+)", function (word)
+        table.insert(arr, word)
+      end)
+    return arr
+  end
+splitlines = function (bigstr)
+    local arr = split(bigstr, "([^\n]*)\n?")
+    if _VERSION:sub(5) < "5.3" then
+      table.remove(arr)
+    end
+    return arr
+  end
+
+map = function (f, arr, n)
+    local brr = {}
+    for i=1,(n or #arr) do table.insert(brr, (f(arr[i]))) end
+    return brr
+  end
+copy = function (A)
+    local B = {}
+    for k,v in pairs(A) do B[k] = v end
+    setmetatable(B, getmetatable(A))
+    return B
+  end
+deepcopy = function (A)
+    if type(A) ~= "table" then return A end
+    local B = {}
+    for k,v in pairs(A) do B[k] = deepcopy(v) end
+    setmetatable(B, getmetatable(A))
+    return B
+  end
+deepcopymt = function (A, mt)
+    if type(A) ~= "table" then return A end
+    local B = {}
+    for k,v in pairs(A) do B[k] = deepcopymt(v, mt) end
+    setmetatable(B, mt)  -- use mt
+    return B
+  end
+
+foldl = function (f, a, B, i, j)
+    for k=(i or 1),(j or #B) do a = f(a, B[k]) end
+    return a
+  end
+
+
 --   ____ _               
 --  / ___| | __ _ ___ ___ 
 -- | |   | |/ _` / __/ __|
@@ -179,6 +246,8 @@ print(SynTree.from(expr(bigstr)))
  (eepitch-shell)
  (eepitch-kill)
  (eepitch-shell)
+echo $LUA_INIT
+export LUA_INIT=""
 echo '{[0]="[", {[0]="/", "x", "y"}, "33"}' \
   | ./luatree.lua
 
