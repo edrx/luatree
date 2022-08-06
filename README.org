@@ -13,10 +13,16 @@
 # (defun o  () (interactive) (find-angg "luatree/README.org"))
 # (defun v  () (interactive) (brg     "~/luatree/README.html"))
 # (defun cv () (interactive) (c) (v))
+# (defun m  () (interactive) (find-angg "luatree/luatree.mac"))
+# (defun li () (interactive) (find-angg "luatree/luatree.lisp"))
+# (defun lu () (interactive) (find-angg "luatree/luatree.lua"))
 # 
+# (find-es "maxima" "luatree")
+# (find-es "maxima" "luatree-explanation")
+# (find-TH "eev-maxima" "luatree")
+#
 # (find-mygitrepo-links "luatree")
 # (find-orgnode "Table of Contents")
-# (find-maximamsg "37689770 202208 04" "Basic question on paths")
 #+OPTIONS: toc:nil num:nil
 
 #+TITLE: luatree.mac: draw Maxima objects as trees (using Lua)
@@ -27,7 +33,11 @@ This is my first Maxima program that falls in the "worth sharing"
 class. I have very little experience with both Maxima and Common Lisp,
 so all suggestions are very welcome.
 
-To see a screenshot, follow [[http://angg.twu.net/IMAGES/luatree.png][this link]].
+To see a screenshot, follow [[http://angg.twu.net/IMAGES/luatree.png][this link]]. There is a detailed explanation
+of how luatree works [[http://angg.twu.net/e/maxima.e.html#luatree-explanation][here]].
+
+# (find-es "maxima" "luatree-explanation")
+# (find-angg "IMAGES/luatree.png")
 
 For htmlized versions of the source files in which all the [[http://angg.twu.net/#eev][eev]]-isms
 are hmlized correctly, follow these links: [[http://angg.twu.net/luatree/luatree.mac.html][luatree.mac]], [[http://angg.twu.net/luatree/luatree.lisp.html][luatree.lisp]],

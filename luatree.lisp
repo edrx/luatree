@@ -3,16 +3,19 @@
 ;;   http://angg.twu.net/luatree/luatree.lisp
 ;;           (find-angg "luatree/luatree.lisp")
 ;; See also:
-;;   http://angg.twu.net/eev-maxima.html#luatree
 ;;   https://github.com/edrx/luatree
 ;;   https://github.com/edrx/luatree/#introduction
+;;   http://angg.twu.net/eev-maxima.html#luatree
+;;   http://angg.twu.net/e/maxima.e.html#luatree
+;;   http://angg.twu.net/e/maxima.e.html#luatree-explanation
+;;               (find-es "maxima" "luatree")
+;;               (find-es "maxima" "luatree-explanation")
 ;; Author: Eduardo Ochs <eduardoochs@gmail.com>
 ;; License: Public Domain.
 ;;
 ;; (defun m  () (interactive) (find-angg "luatree/luatree.mac"))
 ;; (defun li () (interactive) (find-angg "luatree/luatree.lisp"))
 ;; (defun lu () (interactive) (find-angg "luatree/luatree.lua"))
-;; (find-es "maxima" "luatree")
 
 (require :asdf)
 
