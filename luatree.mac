@@ -51,6 +51,31 @@ luatree  (luatree);
 */
 
 
+/* A variant by Robert Dodier (slightly uglified). See:
+ * https://sourceforge.net/p/maxima/mailman/message/37690207/
+ * (find-maximamsg "37690570 202208 06" "RDodier: lua_table_from(e) :=")
+*/
+luatree_rd_0(e) :=
+  if atom(e)
+  then string(e)
+  else funmake(lua_table, cons([0]=op(e), map(luatree_rd_0, args(e))));
+luatree_rd_1(e) :=
+  block([simp:false], string(subst(lua_table=set, luatree_rd_0(e()))));
+luatree_rd(e) := (print(luatree_lua(luatree_rd_1(e))), "");
+
+/*
+ (eepitch-maxima)
+ (eepitch-kill)
+ (eepitch-maxima)
+load ("~/luatree/luatree.mac");
+luatree_rd_0 (lambda([], 2*3 + 4/5 + 6));
+luatree_rd_1 (lambda([], 2*3 + 4/5 + 6));
+luatree_rd   (lambda([], 2*3 + 4/5 + 6));
+
+*/
+
+
+
 
 /*
  * Local Variables:
