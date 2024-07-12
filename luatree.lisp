@@ -10,6 +10,7 @@
 ;;   http://angg.twu.net/e/maxima.e.html#luatree-explanation
 ;;               (find-es "maxima" "luatree")
 ;;               (find-es "maxima" "luatree-explanation")
+;;               (find-es "lisp" "uiop:run-program")
 ;; Author: Eduardo Ochs <eduardoochs@gmail.com>
 ;; License: Public Domain.
 ;;

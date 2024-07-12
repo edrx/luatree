@@ -40,7 +40,6 @@ luatreeopargs2  = lambda s,L: '{' + luatreeop(s) + luatreeargs(L) + '}'
 luatreeopargs   = lambda o: luatreeopargs2(luatreefunc(o), list(map(luatree1d, o.args)))
 luatree         = lambda o: print(luatree_lua(luatree1d(o)))
 
-
 """
  (eepitch-isympy)
  (eepitch-kill)
@@ -54,7 +53,10 @@ f   = Function('f')
 x   = Symbol('x')
 od  = f(x).diff(x, x) + f(x)
 foo = x ** x + 42
-foo
+od, foo
+
+luatree(foo)
+luatree(od)
 
 luatreeopargs2("Pow", list(map(str, [x, x])))
 luatreeopargs2("Pow", list(map(luatree1, [x, x])))

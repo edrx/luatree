@@ -1,0 +1,84 @@
+/*
+ * This file:
+ *   http://anggtwu.net/luatree/luatree2.mac.html
+ *   http://anggtwu.net/luatree/luatree2.mac
+ *          (find-angg "luatree/luatree2.mac")
+ * Author: Eduardo Ochs <eduardoochs@gmail.com>
+ *
+ * (defun o () (interactive) (find-angg "luatree/luatree.mac"))
+ * (defun e () (interactive) (find-angg "luatree/luatree2.mac"))
+ * (defun l () (interactive) (find-angg "luatree/luatree.lisp"))
+ * (find-es "maxima" "mtree")
+ *
+ * Example:
+ *
+ *   (%i1) load("~/luatree/luatree2.mac")$
+ *   (%i2) luatree  (a(b,c))$
+ *   a__.
+ *   |  |
+ *   b  c  
+ *   (%i3) luatree  (a[1][2](b,c))$
+ *   ap_________.__.
+ *   |          |  |
+ *   [_]_____.  b  c
+ *   |       |
+ *   [_]__.  2
+ *   |    |
+ *   a    1  
+ *   (%i4) luatree  (a[1][2](b,c)(d))$
+ *   ap_______________.
+ *   |                |
+ *   ap_________.__.  d
+ *   |          |  |
+ *   [_]_____.  b  c
+ *   |       |
+ *   [_]__.  2
+ *   |    |
+ *   a    1  
+ *   (%i5)
+ *
+*/
+
+luatreedir : pathname_directory(load_pathname);   /* this directory */
+load(concat(luatreedir, "luatree.lisp"));    /* defines luatree_lua */
+
+mtree(o) :=
+  if atom(o) then concat("", o)
+  elseif subvarp(o)  then append(["[_]", mtree(op(o))], map(mtree, args(o)))
+  elseif atom(op(o)) then append([       mtree(op(o))], map(mtree, args(o)))
+  else                    append(["ap",  mtree(op(o))], map(mtree, args(o)));
+
+mtreetoluatree1d(m) :=
+  if atom(m)
+  then concat("\"", m, "\"")    /* TODO: add backslashes when needed */
+  else concat("{[0]=", mapconcat(mtreetoluatree1d, m, ", "), "}");
+
+luatree1d(o) := mtreetoluatree1d(mtree(o));
+luatree2d(o) := luatree_lua(luatree1d(o));              /* calls lua */
+luatree      : lambda([o], print(luatree2d(o), ""));
+
+/*
+ (eepitch-maxima)
+ (eepitch-kill)
+ (eepitch-maxima)
+load("~/luatree/luatree2.mac")$
+
+luatree1d(a(b,c));
+luatree2d(a(b,c));
+luatree  (a(b,c))$
+mtree    (a(b,c));
+mtree    (a[1][2](b,c));
+luatree1d(a[1][2](b,c));
+luatree  (a[1][2](b,c))$
+luatree  (a[1][2](b,c)(d))$
+
+*/
+
+
+
+
+/*
+ * Local Variables:
+ * coding:  utf-8-unix
+ * End:
+*/

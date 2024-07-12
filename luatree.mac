@@ -1,7 +1,7 @@
 /* This file:
- *   http://angg.twu.net/luatree/lua-tree.mac.html
- *   http://angg.twu.net/luatree/lua-tree.mac
- *           (find-angg "luatree/lua-tree.mac")
+ *   http://angg.twu.net/luatree/luatree.mac.html
+ *   http://angg.twu.net/luatree/luatree.mac
+ *           (find-angg "luatree/luatree.mac")
  * See also:
  *   https://github.com/edrx/luatree
  *   https://github.com/edrx/luatree/#introduction
@@ -52,16 +52,18 @@ luatree  (luatree);
 
 
 /* A variant by Robert Dodier (slightly uglified). See:
- * https://sourceforge.net/p/maxima/mailman/message/37690207/
+ * https://sourceforge.net/p/maxima/mailman/message/37690570/
+ * https://sourceforge.net/p/maxima/mailman/message/37690821/
  * (find-maximamsg "37690570 202208 06" "RDodier: lua_table_from(e) :=")
+ * (find-maximamsg "37690821 202208 07" "RDodier: public domain")
 */
-luatree_rd_0(e) :=
-  if atom(e)
-  then string(e)
-  else funmake(lua_table, cons([0]=op(e), map(luatree_rd_0, args(e))));
-luatree_rd_1(e) :=
-  block([simp:false], string(subst(lua_table=set, luatree_rd_0(e()))));
-luatree_rd(e) := (print(luatree_lua(luatree_rd_1(e))), "");
+luatree_rd_0(__e__) :=
+  if atom(__e__)
+  then string(__e__)
+  else funmake(lua_table, cons([0]=op(__e__), map(luatree_rd_0, args(__e__))));
+luatree_rd_1(__e__) :=
+  block([simp:false], string(subst(lua_table=set, luatree_rd_0(__e__()))));
+luatree_rd(__e__) := (print(luatree_lua(luatree_rd_1(__e__))), "");
 
 /*
  (eepitch-maxima)

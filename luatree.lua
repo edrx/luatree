@@ -28,6 +28,13 @@
 --       (find-angg "LUA/lua50init.lua" "map")
 --       (find-angg "LUA/lua50init.lua" "fold")
 --
+readfile = function (fname)
+    local f = assert(io.open(fname, "r"))
+    local bigstr = f:read("*a")
+    f:close()
+    return bigstr
+  end
+
 eval = function (str) return assert(loadstring(str))() end
 expr = function (str) return eval("return "..str) end
 
@@ -239,8 +246,13 @@ SynTree = Class {
 }
 
 
--- Process stdin:
-bigstr = io.read("*a")
+-- Process stdin or arg[1]:
+if arg and arg[1] then
+  bigstr = readfile(arg[1])
+else
+  bigstr = io.read("*a")
+end
+
 print(SynTree.from(expr(bigstr)))
 
 
@@ -258,5 +270,8 @@ echo  $LUA_INIT
 export LUA_INIT=""
 echo '{[0]="[", {[0]="/", "x", "y"}, "33"}' \
   | ./luatree.lua
+
+echo '{[0]="[", {[0]="/", "x", "y"}, "33"}' > /tmp/o1.lua
+./luatree.lua /tmp/o1.lua
 
 --]]
