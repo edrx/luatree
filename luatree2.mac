@@ -50,6 +50,14 @@
 luatreedir : pathname_directory(load_pathname);   /* this directory */
 load(concat(luatreedir, "luatree.lisp"));    /* defines luatree_lua */
 
+intercalate(sep, strs) :=
+  block([strs2, rest],
+         strs2: makelist(concat(sep,strs[i]), i,2,length(strs)),
+         rest:  apply('concat, strs2),
+         concat(strs[1], rest))$
+
+mapconcat(f,a,sep) := intercalate(sep, map(f,a))$
+
 mtree(o) :=
   if atom(o) then concat("", o)
   elseif subvarp(o)  then append(["[_]", mtree(op(o))], map(mtree, args(o)))
